@@ -6,6 +6,9 @@ const optionStyle =
 
 const whiteBold = TextStyle(color: Colors.white, fontWeight: FontWeight.w700);
 
+const bigWhiteBold =
+    TextStyle(color: Colors.white, fontWeight: FontWeight.w700, fontSize: 24);
+
 const urlText = TextStyle(
   color: Color(0xFF41A8F9),
   fontSize: 14.0,
