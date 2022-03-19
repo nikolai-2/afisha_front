@@ -15,7 +15,7 @@ const urlText = TextStyle(
 const smallGreyText = TextStyle(fontSize: 10, color: lightGrey);
 
 const smallCategoryText =
-    TextStyle(fontWeight: FontWeight.w500, color: Color(0xFFA5A5A5));
+    TextStyle(fontWeight: FontWeight.w500, color: lightGrey);
 
 const descriptionEventText =
     TextStyle(fontWeight: FontWeight.w600, color: Colors.white);
