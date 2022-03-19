@@ -33,3 +33,13 @@ flutter:
     - assets/
     - assets/images/
     - assets/icons/
+
+  
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: fonts/Inter/Inter-Regular.ttf
+        - asset: fonts/Inter/Inter-Bold.ttf
+          weight: 700
+        - asset: fonts/Inter/Inter-Medium.ttf
+          weight: 500
