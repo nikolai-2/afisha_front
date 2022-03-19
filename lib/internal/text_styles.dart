@@ -22,3 +22,9 @@ const smallCategoryText =
 
 const descriptionEventText =
     TextStyle(fontWeight: FontWeight.w600, color: Colors.white);
+
+const unselectedNavigationBarText = TextStyle(
+    fontSize: 10, fontWeight: FontWeight.w500, color: Color(0xFF7E7E7E));
+
+const selectedNavigationBarText =
+    TextStyle(fontSize: 10, fontWeight: FontWeight.w500, color: Colors.white);

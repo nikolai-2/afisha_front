@@ -7,3 +7,5 @@ const enventCardColor = Color(0xFF242222);
 const lightGrey = Color(0xFFA5A5A5);
 
 const categoryCardColor = Color(0xFF1F1F1F);
+
+const iconGreyColor = Color(0xFF7E7E7E);
