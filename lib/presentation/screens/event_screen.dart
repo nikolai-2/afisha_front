@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:oggetto_afisha_front/internal/colors.dart';
+import 'package:oggetto_afisha_front/internal/text_styles.dart';
 import 'package:oggetto_afisha_front/presentation/widgets/event_app_bar.dart';
 import 'package:oggetto_afisha_front/presentation/widgets/follow_button.dart';
 
@@ -49,7 +51,7 @@ class EventScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      color: const Color(0xFF242222),
+                      color: enventCardColor,
                       child: Column(
                         children: [
                           const SizedBox(height: 20),
@@ -64,10 +66,7 @@ class EventScreen extends StatelessWidget {
                                   children: [
                                     const Text(
                                       '14 марта',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w700,
-                                      ),
+                                      style: whiteBold,
                                     ),
                                     const Text(
                                       '10:00-13:30',
@@ -100,12 +99,7 @@ class EventScreen extends StatelessWidget {
                                           ),
                                           const TextSpan(
                                             text: 'https://t.me/elona',
-                                            style: TextStyle(
-                                              color: Color(0xFF41A8F9),
-                                              fontSize: 14.0,
-                                              decoration:
-                                                  TextDecoration.underline,
-                                            ),
+                                            style: urlText,
                                           )
                                         ],
                                       ),
@@ -139,10 +133,7 @@ class EventScreen extends StatelessWidget {
                                     ),
                                     const Text(
                                       'Идет ещё 25 человек',
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        color: Color(0xFFA5A5A5),
-                                      ),
+                                      style: smallGreyText,
                                     ),
                                     const SizedBox(height: 15),
                                   ],

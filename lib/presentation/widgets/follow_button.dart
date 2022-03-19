@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oggetto_afisha_front/internal/text_styles.dart';
 
 class FollowButton extends StatelessWidget {
   final String text;
@@ -25,10 +26,7 @@ class FollowButton extends StatelessWidget {
           onTap: onTap,
           child: Text(
             text.toUpperCase(),
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w700,
-            ),
+            style: whiteBold,
           ),
         ),
       ),

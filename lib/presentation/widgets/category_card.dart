@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:oggetto_afisha_front/internal/colors.dart';
 import 'package:oggetto_afisha_front/internal/text_styles.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -21,7 +22,7 @@ class CategoryCard extends StatelessWidget {
         height: 80,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: const Color(0xFF1F1F1F),
+          color: categoryCardColor,
         ),
         padding: const EdgeInsets.only(left: 10, right: 50),
         child: Column(
@@ -30,10 +31,7 @@ class CategoryCard extends StatelessWidget {
           children: [
             SvgPicture.network(asset),
             const SizedBox(height: 10),
-            Text(
-              title,
-              style: optionStyle,
-            ),
+            Text(title, style: optionStyle),
           ],
         ),
       ),

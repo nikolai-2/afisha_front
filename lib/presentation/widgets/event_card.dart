@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oggetto_afisha_front/internal/text_styles.dart';
 
 class EventCard extends StatelessWidget {
   final String text;
@@ -52,19 +53,10 @@ class EventCard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 5),
-            Text(
-              text,
-              style: const TextStyle(
-                fontWeight: FontWeight.w600,
-                color: Colors.white,
-              ),
-            ),
+            Text(text, style: descriptionEventText),
             Text(
               category,
-              style: const TextStyle(
-                fontWeight: FontWeight.w500,
-                color: Color(0xFFA5A5A5),
-              ),
+              style: smallCategoryText,
             ),
           ],
         ),

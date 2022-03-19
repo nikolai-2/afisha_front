@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:oggetto_afisha_front/internal/colors.dart';
 import 'package:oggetto_afisha_front/internal/custom_behavior.dart';
-import 'package:oggetto_afisha_front/presentation/screens/event_screen.dart';
+import 'package:oggetto_afisha_front/presentation/screens/category_screen.dart';
 
 class Application extends StatelessWidget {
   const Application({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class Application extends StatelessWidget {
     return MaterialApp(
       title: 'Oggetto Afisha',
       theme: ThemeData(
-        primaryColor: Colors.blue,
+        scaffoldBackgroundColor: mainBackgroundColor,
       ),
       builder: (context, child) {
         return ScrollConfiguration(
@@ -18,7 +19,7 @@ class Application extends StatelessWidget {
           child: child!,
         );
       },
-      home: const EventScreen(),
+      home: const CategoryScreen(),
     );
   }
 }
