@@ -1,20 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:oggetto_afisha_front/internal/colors.dart';
-import 'package:oggetto_afisha_front/internal/text_styles.dart';
 import 'package:oggetto_afisha_front/presentation/custom_icons.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  int _selectedIndex = 0;
+  PageController pageController = PageController();
+
+  void _onTapped(int index) {
+    _selectedIndex = index;
+    setState(() {});
+    pageController.jumpToPage(index);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Column(
-          children: [],
-        ),
+      body: PageView(
+        controller: pageController,
+        // TODO: внести список готовых экранов
+        children: [
+          Container(color: Colors.red),
+          Container(color: Colors.green),
+          Container(color: Colors.yellow),
+          Container(color: Colors.blue),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
@@ -35,6 +51,7 @@ class MainScreen extends StatelessWidget {
             label: 'Профиль',
           ),
         ],
+        currentIndex: _selectedIndex,
         iconSize: 40,
         backgroundColor: mainBackgroundColor,
         selectedItemColor: Colors.white,
@@ -43,6 +60,7 @@ class MainScreen extends StatelessWidget {
         elevation: 0,
         showUnselectedLabels: false,
         showSelectedLabels: false,
+        onTap: _onTapped,
       ),
     );
   }
