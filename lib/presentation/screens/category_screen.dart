@@ -8,44 +8,42 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0),
-        child: Stack(
-          children: [
-            SingleChildScrollView(
-              child: Wrap(
-                spacing: 10,
-                runSpacing: 10,
-                // TODO: сдать прокрутку с категориями
-                children: List.generate(
-                  50,
-                  (index) => CategoryCard(
-                    asset: 'assets/elon.jpg',
-                    title: 'интерес$index',
-                    onTap: () {},
-                  ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
+      child: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Wrap(
+              spacing: 10,
+              runSpacing: 10,
+              // TODO: сделать прокрутку с категориями
+              children: List.generate(
+                50,
+                (index) => CategoryCard(
+                  asset: 'assets/elon.jpg',
+                  title: 'интерес$index',
+                  onTap: () {},
                 ),
               ),
             ),
-            FractionallySizedBox(
-              heightFactor: 0.15,
-              widthFactor: 1,
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: mainBackgroundColor,
-                ),
-                child: const Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Padding(
-                    padding: EdgeInsets.only(bottom: 15),
-                    child: Text('Интересы', style: bigWhiteBold),
-                  ),
+          ),
+          FractionallySizedBox(
+            heightFactor: 0.15,
+            widthFactor: 1,
+            child: Container(
+              decoration: const BoxDecoration(
+                color: mainBackgroundColor,
+              ),
+              child: const Align(
+                alignment: Alignment.bottomLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 15),
+                  child: Text('Интересы', style: bigWhiteBold),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -1,36 +1,61 @@
 import 'package:flutter/material.dart';
 import 'package:oggetto_afisha_front/internal/colors.dart';
 import 'package:oggetto_afisha_front/presentation/custom_icons.dart';
+import 'package:oggetto_afisha_front/presentation/screens/category_screen.dart';
+import 'package:oggetto_afisha_front/presentation/widgets/calendar.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  PageController pageController = PageController();
+  static DateTime selectedDate = DateTime.now();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  final List<Widget> _pages = [
+    Container(
+      color: Colors.red,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Spacer(),
+          LayoutBuilder(
+            builder: (context, constraints) => Calendar(
+              selectedDate: selectedDate,
+              onDateSelected: (date) {
+                setState(() {});
+              },
+            ),
+          ),
+          Spacer(),
+        ],
+      ),
+    ), // афиша
+    Container(color: Colors.green), // поиск
+    const CategoryScreen(), // интересы
+    Container(color: Colors.blue), // профиль
+  ];
 
   void _onTapped(int index) {
     _selectedIndex = index;
     setState(() {});
-    pageController.jumpToPage(index);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        controller: pageController,
-        // TODO: внести список готовых экранов
-        children: [
-          Container(color: Colors.red),
-          Container(color: Colors.green),
-          Container(color: Colors.yellow),
-          Container(color: Colors.blue),
-        ],
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          return _pages[_selectedIndex];
+        },
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
