@@ -26,7 +26,7 @@ class EventScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
-                    EventAppBar(),
+                    EventAppBar(title: 'Настольные игры'),
                     Padding(
                       padding: EdgeInsets.all(15.0),
                       child: Text(

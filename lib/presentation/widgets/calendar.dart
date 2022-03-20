@@ -5,10 +5,12 @@ import 'package:oggetto_afisha_front/internal/colors.dart';
 class Calendar extends StatefulWidget {
   final DateTime selectedDate;
   final void Function(DateTime) onDateSelected;
+  final double width;
   const Calendar({
     Key? key,
     required this.selectedDate,
     required this.onDateSelected,
+    required this.width,
   }) : super(key: key);
 
   @override
@@ -16,13 +18,13 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
-  final _startDate = DateTime.now();
+  late DateTime startDate = DateTime.now();
   Color _textColor = Colors.white;
-  late DateTime date;
+  DateTime? date;
 
   String _weekdayName() {
     _isHoliday();
-    switch (date.weekday) {
+    switch (date!.weekday) {
       case 1:
         return 'Пн';
       case 2:
@@ -43,28 +45,62 @@ class _CalendarState extends State<Calendar> {
   }
 
   void _isHoliday() {
-    if (date.weekday > 5) {
+    if (date!.weekday > 5) {
       _textColor = const Color(0xFFFF5823);
+      return;
     }
+    _textColor = Colors.white;
   }
 
   @override
-  Widget build(BuildContext context) {
-    return InfiniteListView.builder(
-      itemBuilder: (context, i) {
-        final date = _startDate.add(Duration(days: i));
-        final bool isCurrentDate = date.day == widget.selectedDate.day &&
-            date.month == widget.selectedDate.month &&
-            date.year == widget.selectedDate.year;
-        return InkWell(
-          onTap: () {
-            widget.onDateSelected(date);
-          },
-          borderRadius: BorderRadius.circular(5),
-          child: Ink(
-            width: 40,
-            height: 45,
-            color: categoryCardColor,
+  void initState() {
+    super.initState();
+    startDate = DateTime.now().add(Duration(days: -DateTime.now().weekday + 1));
+  }
+
+  Widget _isCurrent(bool isCurrentDate) {
+    return isCurrentDate
+        ? Ink(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              color: const Color(0xFF3E3E3E),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(3.0),
+              child: Ink(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: categoryCardColor,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      _weekdayName(),
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: _textColor,
+                      ),
+                    ),
+                    Text(
+                      '${date!.day}',
+                      style: TextStyle(
+                        color: _textColor,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          )
+        : Ink(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              color: categoryCardColor,
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -76,13 +112,37 @@ class _CalendarState extends State<Calendar> {
                   ),
                 ),
                 Text(
-                  '${date.day}',
+                  '${date!.day}',
                   style: TextStyle(
                     color: _textColor,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
               ],
+            ),
+          );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InfiniteListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemExtent: widget.width / 6.9,
+      itemBuilder: (context, i) {
+        date = startDate.add(Duration(days: i));
+        final isCurrentDate = date!.day == widget.selectedDate.day &&
+            date!.month == widget.selectedDate.month &&
+            date!.year == widget.selectedDate.year;
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5),
+          child: Material(
+            color: mainBackgroundColor,
+            child: InkWell(
+              onTap: () {
+                widget.onDateSelected(date!);
+              },
+              borderRadius: BorderRadius.circular(5),
+              child: _isCurrent(isCurrentDate),
             ),
           ),
         );

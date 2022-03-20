@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:oggetto_afisha_front/internal/text_styles.dart';
 
 class EventAppBar extends StatelessWidget {
-  const EventAppBar({Key? key}) : super(key: key);
+  final String title;
+  const EventAppBar({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +14,8 @@ class EventAppBar extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Text(
-            'НАСТОЛЬНЫЕ ИГРЫ',
+          Text(
+            title,
             style: whiteBold,
           ),
           const Spacer(),
@@ -30,7 +31,9 @@ class EventAppBar extends StatelessWidget {
                 color: Color(0xFF6F6B6A),
                 size: 25,
               ),
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pop();
+              },
             ),
           ),
         ],

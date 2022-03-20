@@ -4,7 +4,7 @@ import 'package:oggetto_afisha_front/internal/text_styles.dart';
 class EventCard extends StatelessWidget {
   final String text;
   final String category;
-  final String data;
+  final String date;
   final String imageSrc;
   final VoidCallback onTap;
 
@@ -12,7 +12,7 @@ class EventCard extends StatelessWidget {
     Key? key,
     required this.text,
     required this.category,
-    required this.data,
+    required this.date,
     required this.onTap,
     required this.imageSrc,
   }) : super(key: key);
@@ -38,7 +38,7 @@ class EventCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Text(
-                  data,
+                  date,
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w500,

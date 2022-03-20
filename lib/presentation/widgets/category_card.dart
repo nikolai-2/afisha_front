@@ -29,7 +29,7 @@ class CategoryCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SvgPicture.network(asset),
+            SvgPicture.asset(asset),
             const SizedBox(height: 10),
             Text(title, style: optionStyle),
           ],
